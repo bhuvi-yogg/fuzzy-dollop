@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webBhuvi | Find Your Dream Internship in India</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --surface-color: rgba(31, 40, 51, 0.6);
+            --primary: #45f3ff;
+            --secondary: #66fcf1;
+            --text-main: #ffffff;
+            --text-muted: #c5c6c7;
+            --accent-gradient: linear-gradient(135deg, #45f3ff 0%, #66fcf1 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(69, 243, 255, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(102, 252, 241, 0.08) 0%, transparent 25%);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(11, 12, 16, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .bb-logo {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            font-size: 24px;
+            color: #000;
+            box-shadow: 0 0 20px rgba(69, 243, 255, 0.4);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #000;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 20px rgba(69, 243, 255, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(69, 243, 255, 0.4);
+        }
+
+        /* Internships Section */
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+        
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .internships {
+            padding: 100px 5vw;
+            background: rgba(255,255,255,0.02);
+            position: relative;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--surface-color);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.4s, border-color 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-gradient);
+            transition: left 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(69, 243, 255, 0.3);
+        }
+
+        .card:hover::before {
+            left: 0;
+        }
+
+        .badge {
+            background: rgba(69, 243, 255, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .card .company {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            font-size: 14px;
+        }
+
+        .detail-item span {
+            display: block;
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+
+        .apply-btn {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        .card:hover .apply-btn {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 5vw;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-box {
+            background: var(--surface-color);
+            border-radius: 30px;
+            padding: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .info-item {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0,0,0,0.3);
+            padding: 15px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .info-item i {
+            color: var(--primary);
+            font-size: 24px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary);
+        }
+
+        textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #050608;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+            .contact-info { flex-direction: column; }
+        }
+    </style>
+    <!-- Use FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo-container">
+            <div class="bb-logo">bb</div>
+            <div class="logo-text">web<span>Bhuvi</span></div>
+        </a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#internships">Internships</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1>Kickstart Your Career<br>in <span>India</span></h1>
+        <p>Your one-stop platform for premium internship opportunities across top Indian cities. Apply directly and fast-track your future with webBhuvi.</p>
+        <a href="#internships" class="cta-btn">Explore Internships</a>
+    </header>
+
+    <section class="internships" id="internships">
+        <h2 class="section-title">Latest <span>Internships</span></h2>
+        
+        <div class="grid">
+            <!-- Internship 1 -->
+            <div class="card">
+                <span class="badge">Tech / IT</span>
+                <h3>Software Engineer Intern</h3>
+                <div class="company"><i class="fa-solid fa-building"></i> TechFusion India</div>
+                <div class="details">
+                    <div class="detail-item">
+                        <span>Location</span>
+                        📍 Bengaluru
+                    </div>
+                    <div class="detail-item">
+                        <span>Stipend</span>
+                        ₹ 25,000 / mo
+                    </div>
+                </div>
+                <a href="#contact" class="apply-btn" onclick="alert('Application portal opening soon! Please use the Contact form to drop your resume for now.')">Apply via webBhuvi</a>
+            </div>
+
+            <!-- Internship 2 -->
+            <div class="card">
+                <span class="badge">Marketing</span>
+                <h3>Digital Marketing Intern</h3>
+                <div class="company"><i class="fa-solid fa-building"></i> GrowthHackers Ltd.</div>
+                <div class="details">
+                    <div class="detail-item">
+                        <span>Location</span>
+                        📍 Mumbai
+                    </div>
+                    <div class="detail-item">
+                        <span>Stipend</span>
+                        ₹ 15,000 / mo
+                    </div>
+                </div>
+                <a href="#contact" class="apply-btn" onclick="alert('Application portal opening soon! Please use the Contact form to drop your resume for now.')">Apply via webBhuvi</a>
+            </div>
+
+            <!-- Internship 3 -->
+            <div class="card">
+                <span class="badge">Design</span>
+                <h3>UI/UX Design Intern</h3>
+                <div class="company"><i class="fa-solid fa-building"></i> Creative Minds Studio</div>
+                <div class="details">
+                    <div class="detail-item">
+                        <span>Location</span>
+                        📍 Pune 
+                    </div>
+                    <div class="detail-item">
+                        <span>Stipend</span>
+                        ₹ 20,000 / mo
+                    </div>
+                </div>
+                <a href="#contact" class="apply-btn" onclick="alert('Application portal opening soon! Please use the Contact form to drop your resume for now.')">Apply via webBhuvi</a>
+            </div>
+
+            <!-- Internship 4 -->
+            <div class="card">
+                <span class="badge">Data Analytics</span>
+                <h3>Data Analyst Intern</h3>
+                <div class="company"><i class="fa-solid fa-building"></i> Quantix Solutions</div>
+                <div class="details">
+                    <div class="detail-item">
+                        <span>Location</span>
+                        📍 Hyderabad
+                    </div>
+                    <div class="detail-item">
+                        <span>Stipend</span>
+                        ₹ 30,000 / mo
+                    </div>
+                </div>
+                <a href="#contact" class="apply-btn" onclick="alert('Application portal opening soon! Please use the Contact form to drop your resume for now.')">Apply via webBhuvi</a>
+            </div>
+            
+             <!-- Internship 5 -->
+            <div class="card">
+                <span class="badge">Finance</span>
+                <h3>Financial Analyst Intern</h3>
+                <div class="company"><i class="fa-solid fa-building"></i> Capital Wealth Bank</div>
+                <div class="details">
+                    <div class="detail-item">
+                        <span>Location</span>
+                        📍 Delhi NCR
+                    </div>
+                    <div class="detail-item">
+                        <span>Stipend</span>
+                        ₹ 22,000 / mo
+                    </div>
+                </div>
+                <a href="#contact" class="apply-btn" onclick="alert('Application portal opening soon! Please use the Contact form to drop your resume for now.')">Apply via webBhuvi</a>
+            </div>
+            
+             <!-- Internship 6 -->
+            <div class="card">
+                <span class="badge">HR</span>
+                <h3>Human Resources Intern</h3>
+                <div class="company"><i class="fa-solid fa-building"></i> PeopleFirst Solutions</div>
+                <div class="details">
+                    <div class="detail-item">
+                        <span>Location</span>
+                        📍 Chennai
+                    </div>
+                    <div class="detail-item">
+                        <span>Stipend</span>
+                        ₹ 12,000 / mo
+                    </div>
+                </div>
+                <a href="#contact" class="apply-btn" onclick="alert('Application portal opening soon! Please use the Contact form to drop your resume for now.')">Apply via webBhuvi</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact <span>webBhuvi</span></h2>
+        <p style="color: var(--text-muted);">Want to apply for an internship or feature a new one? Reach out to us!</p>
+        
+        <div class="contact-box">
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i> bhumneshnayak00@gmail.com
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i> +91 7623834047
+                </div>
+                <div class="info-item">
+                    <i class="fa-brands fa-instagram"></i> @whoissbbb
+                </div>
+            </div>
+            
+            <form onsubmit="event.preventDefault(); alert('Message sent successfully! webBhuvi team will contact you soon.'); this.reset();">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="Interested Internship Role" required>
+                <textarea placeholder="Your Message or Application Link..." required></textarea>
+                <button type="submit" class="cta-btn" style="width: 100%;">Submit Application / Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 webBhuvi. All rights reserved. Made by Bhumnesh Labana.</p>
+    </footer>
+
+</body>
+</html>
